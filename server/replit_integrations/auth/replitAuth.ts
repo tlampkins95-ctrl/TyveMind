@@ -10,6 +10,10 @@ import { authStorage } from "./storage";
 
 const getOidcConfig = memoize(
   async () => {
+    // Skip Replit auth if not in Replit environment
+    if (!process.env.REPL_ID || process.env.REPL_ID === 'disabled') {
+      return null;
+    }
     return await client.discovery(
       new URL(process.env.ISSUER_URL ?? "https://replit.com/oidc"),
       process.env.REPL_ID!
