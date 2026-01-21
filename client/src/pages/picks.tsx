@@ -122,12 +122,12 @@ export default function PicksPage() {
             <div className="bg-card/30 border border-primary/20 rounded-2xl p-6 backdrop-blur-md max-w-2xl">
               <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                 <BrainCircuit className="w-5 h-5 text-primary" />
-                NHL Hockey Strategy
+                NHL Hockey Strategy (ROI-Optimized)
               </h3>
               <ul className="space-y-3 text-sm text-muted-foreground list-disc pl-5">
-                <li>NHL: Analyzing Kambi (Potawatomi) for +1.5 pucklines (-200 odds minimum).</li>
-                <li>H2H History: Verifying last 20 head-to-head via Aiscore.</li>
-                <li>Filtering: High probability of staying within 1 goal.</li>
+                <li><strong>Pucklines:</strong> Tier 1 (-180 to -210) preferred, Tier 2 (-211 to -240) acceptable, Tier 3 (-241 to -260) hot teams only.</li>
+                <li><strong>Moneylines:</strong> Favorites max -200 on streaks, Underdogs +120 to +180 with criteria.</li>
+                <li><strong>Focus:</strong> Value picks with 2-4+ supporting factors (hot teams, H2H, B2B, goalie edge, injuries).</li>
               </ul>
             </div>
 
