@@ -385,7 +385,7 @@ export async function registerRoutes(
       try {
         user = await storage.createUser({
           username: "demo_user",
-          bettingStrategy: "Focus on WTA, ATP, and NHL. NHL: Look for +1.5 puckline spreads with a minimum of -200 odds (e.g., -250 is allowed, -150 is NOT) (Source: Potawatomi Sportsbook). Tennis: Use espn.com to find matches, provide specific players on win streaks with a clear edge (Source: TennisExplorer/ESPN).",
+          bettingStrategy: "FOCUS: NHL Hockey Only (Maximum ROI Strategy). Puckline: Tier 1 (-180 to -210) preferred with 2+ factors, Tier 2 (-211 to -240) with 3+ factors, Tier 3 (-241 to -260) only hot teams with 4+ factors. Moneyline: Favorites max -200 on 3+ streaks, Underdogs +120 to +180 with 3+ criteria (hot team, B2B opponent, goalie edge, home rest, H2H, injuries). Sources: Potawatomi Sportsbook.",
           bankroll: 1000,
         });
       } catch (error) {
