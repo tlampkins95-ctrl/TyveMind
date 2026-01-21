@@ -71,6 +71,12 @@ export async function setupAuth(app: Express) {
   app.use(passport.session());
 
   const config = await getOidcConfig();
+  
+  // Skip Replit OIDC setup if not in Replit environment
+  if (!config) {
+    console.log("[Auth] Skipping Replit OIDC - running in non-Replit environment");
+    return;
+  }
 
   const verify: VerifyFunction = async (
     tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers,
