@@ -2212,34 +2212,28 @@ export async function registerRoutes(
          - These high-value plays can offset multiple favorite losses
          - Format: "[ABBREV] [Team Name] ML +[odds]" (e.g., "ARI Coyotes ML +145")
       
-      3. TENNIS PICKS - KAMBI ODDS ONLY (-200 to -300 range):
-         - ONLY pick tennis matches from the "KAMBI/POTAWATOMI TENNIS ODDS - FAVORABLE MATCHES" section.
-         - Target picks where the favorite is priced between -200 and -300 (strong but not a lock).
-         - Use the KAMBI odds shown - these are the ACTUAL betting lines available.
-         - Cross-reference with player form data when available.
-         - If no matches in the favorable range exist, DO NOT make tennis picks.
-         - Include the EXACT Kambi odds in your reasoning (e.g., "Kambi lists Pegula at -245").
+      3. REASONING FORMAT (IMPORTANT - Be specific and data-driven, 2-3 sentences):
+         Include: (1) Juice tier and supporting factors count, (2) Key statistical insight, (3) Why this creates value.
+         
+         Example Tier 1 Puckline: "Potawatomi lists Montreal +1.5 at -195 (Tier 1 value). 3 supporting factors: opponent on B2B, last 20 H2H show 16 one-goal games (80%), and Montreal's strong road goaltending. Excellent value at this juice with 75%+ win probability."
+         
+         Example Tier 2 Puckline: "Dallas +1.5 at -225 (Tier 2). 4 factors: HOT TEAM (8-2 our record), H2H shows tight games, Colorado's goalie questionable, Dallas rested. Edge justifies the juice."
+         
+         Example ML Favorite: "Vegas on 5-game NHL win streak, ML at -180. Implied probability 64%, but streak + home ice + goalie edge suggests 75% true probability = 11% value edge."
+         
+         Example ML Underdog: "Arizona ML +145 (underdog value play). 4 criteria met: HOT TEAM in our system, opponent on B2B, home after rest, goalie advantage (Vejmelka GSAx +8 vs opponent -3). Odds imply 41% chance but true probability closer to 50%+."
       
-      4. REASONING FORMAT (IMPORTANT - Be descriptive but concise, 2-3 sentences):
-         Include: (1) Key statistical insight, (2) H2H or form context, (3) Why this creates value.
-         Example Puckline: "Potawatomi/Kambi lists Montreal +1.5 at -220. Last 20 H2H show 14 games decided by 1 goal. Montreal's road form and Dallas's pattern of close wins create a high-probability cover opportunity."
-         Example ML: "Vegas on a 5-game win streak, ML at -150 (40% implied). With streak probability around 70%, this creates a 30% edge."
-      
-      5. TENNIS PICKS MUST USE SPECIFIC PLAYER NAMES AND VENUE:
-         - NEVER say "player on win streak" - use the actual player's full name (e.g., "Belinda Bencic", "Grigor Dimitrov")
-         - Event MUST include the EXACT venue from the data (e.g., "Brisbane International @ Brisbane, Australia (Pat Rafter Arena) - Dimitrov vs Khachanov")
-         - Prediction should name the specific player (e.g., "Grigor Dimitrov to win")
-         - Use the venue/location exactly as shown in the schedule data
-      
-      6. OUTPUT FORMAT:
+      4. OUTPUT FORMAT:
          - Provide UP TO 5 UNIQUE picks sorted by confidence.
-         - Mix of puckline AND moneyline picks for NHL if candidates exist.
+         - Mix of puckline, ML favorites, and ML underdogs for NHL.
+         - PRIORITIZE Tier 1 (-180 to -210) picks over heavier juice.
+         - Include at least 1 underdog pick if qualifying options exist.
          - JSON: { "picks": [{ sport, event, prediction, reasoning, confidence (1-10), scheduledTime, edge, odds }] }
-         - SPORT VALUES: Use EXACTLY "NHL" or "Tennis" (NOT "ATP", "WTA", or any other values).
-         - reasoning MUST be a plain STRING (not an object), 2-3 descriptive sentences.`;
+         - SPORT VALUES: Use EXACTLY "NHL" only (we are focusing solely on hockey).
+         - reasoning MUST be a plain STRING (not an object), 2-3 descriptive sentences with tier and factors mentioned.`;
 
-      const userPrompt = `Generate picks for ${sport || "upcoming games"}.
-      Context: ${context || "Focus ONLY on WTA, ATP, and NHL. Use tennisexplorer.com/espn.com for Tennis, and espn.com/aiscore.com for NHL."}`;
+      const userPrompt = `Generate picks for ${sport || "NHL games"}.
+      Context: ${context || "Focus ONLY on NHL hockey. Prioritize Tier 1 value picks (-180 to -210 range), and include selective underdog plays when criteria are met."}`;
 
       // Call OpenAI
       const response = await openai.chat.completions.create({
