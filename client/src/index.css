@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* True Black Theme for Sports Analytics */
+  --background: 0 0% 0%;
+  --foreground: 210 40% 98%;
+
+  --card: 0 0% 3%;
+  --card-foreground: 210 40% 98%;
+
+  --popover: 0 0% 3%;
+  --popover-foreground: 210 40% 98%;
+
+  /* Orange Primary */
+  --primary: 25 95% 53%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 7%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 0 0% 7%;
+  --muted-foreground: 215 20% 65%;
+
+  --accent: 25 95% 53%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 0 0% 12%;
+  --input: 0 0% 12%;
+  --ring: 25 95% 53%;
+
+  --radius: 0.75rem;
+
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-white/5 shadow-xl;
+  }
+  
+  .glass-input {
+    @apply bg-secondary/50 border-white/10 focus:border-primary/50 focus:ring-primary/20 transition-all duration-300;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+  }
+  
+  .stat-card {
+    @apply relative overflow-hidden rounded-2xl p-6 border border-white/10;
+    background: linear-gradient(135deg, hsl(0 0% 5%) 0%, hsl(0 0% 3%) 100%);
+  }
+  
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(25 95% 53% / 0.5), transparent);
+  }
+  
+  .stat-card-glow {
+    @apply stat-card;
+    box-shadow: 0 0 40px -10px hsl(25 95% 53% / 0.3), inset 0 1px 0 0 hsl(25 95% 53% / 0.1);
+  }
+  
+  .gradient-border {
+    @apply relative rounded-2xl;
+    background: linear-gradient(135deg, hsl(25 95% 53% / 0.2) 0%, transparent 50%);
+    padding: 1px;
+  }
+  
+  .gradient-border > * {
+    @apply bg-card rounded-2xl;
+  }
+  
+  .section-header {
+    @apply relative pl-4 font-bold text-white;
+    font-family: var(--font-display);
+  }
+  
+  .section-header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 70%;
+    border-radius: 3px;
+    background: linear-gradient(180deg, hsl(25 95% 53%) 0%, hsl(25 80% 40%) 100%);
+  }
+  
+  .glow-text {
+    @apply text-primary font-bold;
+    text-shadow: 0 0 30px hsl(25 95% 53% / 0.6), 0 0 60px hsl(25 95% 53% / 0.3);
+  }
+  
+  .surface-elevated {
+    background: linear-gradient(135deg, hsl(0 0% 6%) 0%, hsl(0 0% 4%) 100%);
+    @apply border border-white/5 rounded-2xl;
+  }
+  
+  .surface-sunken {
+    background: linear-gradient(135deg, hsl(0 0% 2%) 0%, hsl(0 0% 4%) 100%);
+    @apply border border-white/5 rounded-xl;
+  }
+  
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px -5px hsl(25 95% 53% / 0.4); }
+    50% { box-shadow: 0 0 40px -5px hsl(25 95% 53% / 0.6); }
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+}
