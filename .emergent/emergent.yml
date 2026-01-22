@@ -1,22 +1,6 @@
 version: 1
 name: TyveMind
-description: AI-powered NHL betting picks with ROI-optimized strategy
-
-services:
-  - name: tyvemind
-    type: nodejs
-    build:
-      command: yarn install && yarn build
-    start:
-      command: node dist/index.cjs
-      port: 3000
-    env_file: .env
-    
-database:
-  type: external
-  connection_string_env: DATABASE_URL
-
-deployment:
-  healthcheck:
-    path: /api/user
-    port: 3000
+type: nodejs
+port: 3000
+build: yarn install && yarn build
+start: node dist/index.cjs
