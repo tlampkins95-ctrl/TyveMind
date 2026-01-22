@@ -6,9 +6,9 @@ services:
   - name: tyvemind
     type: nodejs
     build:
-      command: yarn install
+      command: yarn install && yarn build
     start:
-      command: yarn start
+      command: node dist/index.cjs
       port: 3000
     env_file: .env
     
