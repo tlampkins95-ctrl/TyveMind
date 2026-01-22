@@ -48,6 +48,8 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a1625 50%, #0d1117 100%);
+    background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
