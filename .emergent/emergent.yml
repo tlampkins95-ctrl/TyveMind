@@ -1,5 +1,22 @@
-{
-  "env_image_name": "fastapi_react_mongo_shadcn_base_image_cloud_arm:release-09012026-2",
-  "job_id": "ef7068dc-b7c9-45a0-a5ff-cef3890caed6",
-  "created_at": "2026-01-22T00:39:19.835646+00:00Z"
-}
+version: 1
+name: TyveMind
+description: AI-powered NHL betting picks with ROI-optimized strategy
+
+services:
+  - name: tyvemind
+    type: nodejs
+    build:
+      command: yarn install
+    start:
+      command: yarn dev
+      port: 8001
+    env_file: .env
+    
+database:
+  type: external
+  connection_string_env: DATABASE_URL
+
+deployment:
+  healthcheck:
+    path: /api/user
+    port: 8001
