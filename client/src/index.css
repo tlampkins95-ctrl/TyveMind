@@ -149,4 +149,27 @@
   .pulse-glow {
     animation: pulse-glow 3s ease-in-out infinite;
   }
+  
+  .glass-card-enhanced {
+    background: rgba(17, 25, 40, 0.75);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glow-border {
+    box-shadow: 0 0 20px rgba(255, 140, 66, 0.3);
+    border: 1px solid rgba(255, 140, 66, 0.5);
+  }
+  
+  .stat-card-enhanced {
+    background: linear-gradient(135deg, rgba(255, 140, 66, 0.1) 0%, rgba(255, 107, 53, 0.05) 100%);
+    border: 1px solid rgba(255, 140, 66, 0.2);
+  }
 }
