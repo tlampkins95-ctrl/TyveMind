@@ -5,3 +5,7 @@ server/public
 vite.config.ts.*
 *.tar.gzziiO8Rid
 *.zip
+-e 
+# Environment files
+*.env
+*.env.*
